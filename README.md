@@ -1,17 +1,17 @@
-##Homey app for ESPurna devices
+## Homey app for ESPurna devices
 https://github.com/xoseperez/espurna
 
 Below is a list of some of the devices that can be flashed with ESPurna.
 Currently only sockets and 1ch switches are supported in this app, but contributions are welcome.
 
-####TUYA
+#### TUYA
 TUYA devices can be flashed easily without opening and/or soldering using tuya-convert: https://github.com/xoseperez/espurna/wiki/OTA-TUYA   
 
 Make sure to flash with ESPurna firmware (Tasmoto is default). Download the firmware for your device here: https://github.com/xoseperez/espurna/releases  
 
 If you are not sure which firmware is correct, it is very easy to change firmware ("upgrade") from the web interface after first flash, so no worries. 
 
-####ESPurna compatible devices
+#### ESPurna compatible devices
 
 AI-Thinker AI Light / Noduino OpenLight  
 Arilux AL-LC01  
