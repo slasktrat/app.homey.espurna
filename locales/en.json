@@ -1,0 +1,10 @@
+{
+  "pair": {
+    "configuration" : {
+      "explanation": "Make sure HTTP API is enabled in ESPurna/Admin and copy the HTTP API Key",
+      "apikey": "API key",
+      "ip_address" : "IP address",
+      "add_device" : "Add device"
+    }
+  }
+}

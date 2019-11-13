@@ -1,0 +1,131 @@
+{
+  "id": "app.homey.espurna",
+  "version": "1.0.0",
+  "compatibility": ">=2.0.0",
+  "author": {
+    "name": "Espen Ljosland",
+    "email": "espen@ljosland.com"
+  },
+  "sdk": 2,
+  "name": {
+    "en": "ESPurna"
+  },
+  "description": {
+    "en": "ESPurna integration"
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "drivers": [
+    {
+      "id": "socket",
+      "name": {
+        "en": "Socket"
+      },
+      "capabilities": [
+        "onoff"
+      ],
+      "capabilitiesOptions": {
+        "measure_current": {
+          "units": {
+            "en": "A"
+          }
+        }
+      },
+      "class": "socket",
+      "pair": [
+        {
+          "id": "configure"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "ESPurna settings"
+          },
+          "children": [
+            {
+              "id": "ip_address",
+              "type": "text",
+              "value": "0.0.0.0",
+              "label": {
+                "en": "IP address"
+              }
+            },
+            {
+              "id": "apikey",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "API key"
+              }
+            }
+          ]
+        }
+      ],
+      "images": {
+        "large": "/drivers/socket/assets/images/large.png",
+        "small": "/drivers/socket/assets/images/small.png"
+      }
+    },
+    {
+      "id": "switch",
+      "name": {
+        "en": "Switch"
+      },
+      "capabilities": [
+        "onoff"
+      ],
+      "class": "socket",
+      "pair": [
+        {
+          "id": "configure"
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "ESPurna settings"
+          },
+          "children": [
+            {
+              "id": "ip_address",
+              "type": "text",
+              "value": "0.0.0.0",
+              "label": {
+                "en": "IP address"
+              }
+            },
+            {
+              "id": "apikey",
+              "type": "text",
+              "value": "",
+              "label": {
+                "en": "API key"
+              }
+            }
+          ]
+        }
+      ],
+      "images": {
+        "large": "/drivers/switch/assets/images/large.png",
+        "small": "/drivers/switch/assets/images/small.png"
+      }
+    }
+  ]
+}

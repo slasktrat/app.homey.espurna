@@ -1,0 +1,179 @@
+<style type="text/css">
+    span label {
+        width: 100px
+    }
+    #loader {
+      position: fixed;
+      z-index: 999;
+      overflow: show;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 50px;
+      height: 50px;
+    }
+
+    /* Transparent Overlay */
+    #loader:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.5);
+    }
+
+    /* :not(:required) hides these rules from IE9 and below */
+    #loader:not(:required) {
+      /* hide "loading..." text */
+      font: 0/0 a;
+      color: transparent;
+      text-shadow: none;
+      background-color: transparent;
+      border: 0;
+    }
+
+    #loader:not(:required):after {
+      content: '';
+      display: block;
+      font-size: 10px;
+      width: 50px;
+      height: 50px;
+      margin-top: -0.5em;
+
+      border: 5px solid rgba(33, 150, 243, 1.0);
+      border-radius: 100%;
+      border-bottom-color: transparent;
+      -webkit-animation: spinner 1s linear 0s infinite;
+      animation: spinner 1s linear 0s infinite;
+    }
+
+    /* Animation */
+    @-webkit-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-o-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+</style>
+<script type="text/javascript">
+
+    // Set translated items
+    $("label[for='apikey']").text(__('pair.configuration.apikey') + ':');
+    $("label[for='ip_address']").text(__('pair.configuration.ip_address') + ':');
+
+    function configure()
+    {
+        $('.err-msg').text('');
+
+        const apikey = $("#apikey").val();
+        const ipAddress = $("#ip_address").val();
+
+        let device = {
+            data: {
+                id: "espurna_" + new Date().getTime(),
+            },
+            name: "ESPurna " + ipAddress,
+            settings: {
+                apikey: apikey,
+                ip_address: ipAddress
+            }
+        };
+
+        $('#authentication_button').attr("disabled", true);
+        $('#loader').show();
+        Homey.emit( 'configure', device, function ( err, modifiedDevice ) {
+            if(err) {
+                $('#loader').hide();
+                $('#authentication_button').attr("disabled", false);
+                $('.err-msg').text(err)
+            }
+            else {
+                //Successfully connected
+                Homey.addDevice(modifiedDevice, function( err, result ){
+                    if( err )
+                        return console.error(err);
+                });
+
+                //Done pairing
+                Homey.done();
+            }
+        } );
+    }
+</script>
+
+<p id="authentication_text" data-i18n="pair.configuration.explanation"></p>
+<p class="form-group">
+  <span class="input-wrap">
+    <label for="ip_address"></label>    
+    <input type="text" id="ip_address"/>
+    <label for="apikey"></label>
+    <input type="text" id="apikey"/>
+  </span>
+</p>
+<button class="button" id="authentication_button" onclick="configure();" data-i18n="pair.configuration.add_device" ></button>
+<br /><br />
+<p class="err-msg" style="color: #ff6300;"></p>
+<div id="loader" style="display: none"></div>
