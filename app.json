@@ -1,12 +1,12 @@
 {
   "id": "app.homey.espurna",
-  "version": "1.0.1",
-  "compatibility": ">=2.0.0",
+  "version": "1.1.0",
+  "compatibility": ">=5.0.0",
   "author": {
     "name": "Espen Ljosland",
     "email": "espen@ljosland.com"
   },
-  "sdk": 2,
+  "sdk": 3,
   "brandColor": "#2D8CCC",
   "name": {
     "en": "ESPurna"

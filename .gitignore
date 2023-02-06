@@ -1,3 +1,7 @@
 .idea
 logo.ai
 logo_svg.ai
+
+
+# Added by Homey CLI
+/.homeybuild/

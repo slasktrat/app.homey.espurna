@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "Fixed brandColor + removed url from README.txt"
+  },
+  "1.1.0": {
+    "en": "Migrated to SDKv3"
   }
 }
