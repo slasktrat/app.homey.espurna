@@ -2,14 +2,28 @@
 https://github.com/xoseperez/espurna
 
 Below is a list of some of the devices that can be flashed with ESPurna.
-Currently only sockets and 1ch switches are supported in this app, but contributions are welcome.
+Currently only sockets and 1-ch switches are supported in this app, but contributions are welcome.
 
+#### Recommended settings
+Most settings can stay default, but some needs to be changed in order for this app to work properly. 
+- ADMIN   
+  - Enable HTTP API: Yes
+  - HTTP API Key: Create a key and note it 
+- GENERAL   
+  - LED mode: Relay & Wifi (optional)
+- SENSORS
+  - Save every: 60
+  - Energy units: Kilowatt-hour
+- SWITCHES
+  - Boot mode: Same as before
+    
 #### TUYA
 TUYA devices can be flashed easily without opening and/or soldering using tuya-convert: https://github.com/xoseperez/espurna/wiki/OTA-TUYA   
 
 Make sure to flash with ESPurna firmware (Tasmoto is default). Download the firmware for your device here: https://github.com/xoseperez/espurna/releases  
 
-If you are not sure which firmware is correct, it is very easy to change firmware ("upgrade") from the web interface after first flash, so no worries. 
+If you are not sure which firmware is correct, it is very easy to change firmware ("upgrade") from the web interface after first flash, so no worries.  
+But be careful to follow all instructions thoroughly or your device may be bricked. 
 
 #### ESPurna compatible devices
 
